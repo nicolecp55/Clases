@@ -16,6 +16,9 @@ Created on Tue Jun 13 16:46:40 2023
 
 #librería
 import streamlit as st
+from PIL import Image
+
+
 
 ############ Programando las unidades en quechua #####################
 
@@ -148,7 +151,16 @@ def mapudungun(n):
         return s
     
 #título
-st.title("números en quechua y mapudungun")
+st.title("Números en quechua y mapudungun")
+
+#Descripción de las lenguas
+st.write("🐾 Por un lado, las unidades en quechua son independientes. Solo están sometidas a una regla fonológica: si es que esta unidad termina en vocal, se le debe añadir el sufijo -yuq; pero, si termina en consonante, se le debe de añadir -ni y, luego, -yuq. Para la formación de decenas, el número se multiplica por chunka y la unidad atraviesa la ley fonológica. Para la formación de centenas, el número se multiplica por pachak (10) y se añade lo hehco para las centenas y decenas.")
+st.write("🐾 Por otro lado, los números en mapudungun se forman de manera similar, solo que sin la presencia de una regla fonológica, como en quechua. Las unidades son independientes. Pero si queremos formar decenas, usamos la palabra mari. Cuando colocamos una unidad después de la palabra mari esta se suma, por ejemplo, mari kiñe = 10+1. En contraste, si colocamos la unidad antes de mari esta se multiplica, por ejemplo, epu mari kiñe= (2x10)+1 = 21. Lo mismo ocurre con las centenas, solo que ahí se utiliza pataka: epu pataka meli mari kiñe = (2 x 100) + (4x 10) + 1 = 241.")
+
+## librería
+
+i = Image.open('tamipa.jpg')
+st.image(i)
 
 ## opciones
 options = st.multiselect(
@@ -157,7 +169,7 @@ options = st.multiselect(
 
 
 #opción 2
-n_input = st.slider("🐾 Elija un número entre 1 y 99 👇🐾")
+n_input = st.slider("Elija un número entre 1 y 999 👇", 1, 999, 1)
 if "Quechua" in options:
 
     st.write("El número" + " " + str(n_input) + " " + "en quechua se escribe" + " " + quechua(n_input))
